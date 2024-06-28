@@ -1,0 +1,5 @@
+name: Build, test, and push to Docker Hub
+on:
+  push:
+    branches:
+      - main
