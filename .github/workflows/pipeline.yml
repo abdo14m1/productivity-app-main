@@ -36,7 +36,7 @@ jobs:
           path: client
 
       - name: install dependencies and run unit tests
-        working-directory: $GITHUB_WORKSPACE/client
         run: |
+          cd "/$GITHUB_WORKSPACE/client"
           npm install
           npm test
