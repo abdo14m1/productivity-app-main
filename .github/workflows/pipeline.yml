@@ -22,21 +22,22 @@ jobs:
       - name: checkout server code
         uses: actions/checkout@v4
         with:
-          path: server
+          sparsecheckoiut: server
 
       - name: install dependencies and run unit tests
-        working-directory: $GITHUB_WORKSPACE/server
+        working-directory:
         run: |
+          cd $GITHUB_WORKSPACE/server
           npm install
           npm test
 
       - name: checkout client code
         uses: actions/checkout@v4
         with:
-          path: client
+          sparse-checkout: client
 
       - name: install dependencies and run unit tests
         run: |
-          cd "/$GITHUB_WORKSPACE/client"
+          cd client
           npm install
           npm test
