@@ -1,5 +1,41 @@
 name: Build, test, and push to Docker Hub
-on:
+"on":
   push:
     branches:
       - main
+env:
+  MONGODB_URI: ${{ secrets.MONGODB_URI }}
+  TOKEN_KEY: ${{ secrets.TOKEN_KEY }}
+  EMAIL: ${{ secrets.EMAIL }}
+  PASSWORD: ${{ secrets.PASSWORD }}
+jobs:
+  - unit-tests:
+      - name: unit tests
+        runs-on: ubuntu-latest
+        steps:
+          - name: Set up node17
+            uses: actions/setup-node@v4
+            with:
+              node-version: "17.0"
+
+          - name: checkout server code
+            uses: actions/checkout@v4
+            with:
+              path: server
+
+          - name: install dependencies and run unit tests
+            working-directory: server
+            run: |
+              npm install
+              npm test
+
+          - name: checkout client code
+            uses: actions/checkout@v4
+            with:
+              path: client
+
+          - name: install dependencies and run unit tests
+            working-directory: client
+            run: |
+              npm install
+              npm test
