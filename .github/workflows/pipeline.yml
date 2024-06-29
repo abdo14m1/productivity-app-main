@@ -25,7 +25,7 @@ jobs:
           path: server
 
       - name: install dependencies and run unit tests
-        working-directory: server
+        working-directory: $GITHUB_WORKSPACE/server
         run: |
           npm install
           npm test
@@ -36,7 +36,7 @@ jobs:
           path: client
 
       - name: install dependencies and run unit tests
-        working-directory: client
+        working-directory: $GITHUB_WORKSPACE/client
         run: |
           npm install
           npm test
