@@ -22,7 +22,7 @@ jobs:
       - name: checkout server code
         uses: actions/checkout@v4
         with:
-          sparsecheckoiut: server
+          sparse-checkout: server
 
       - name: install dependencies and run unit tests
         working-directory:
